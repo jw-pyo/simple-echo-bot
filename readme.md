@@ -1,5 +1,5 @@
 # Simple echo bot server
-[![Run on Ainize](https://ainize.ai/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=https://github.com/ainize-team/simple-echo-bot)
+[![Run on Ainize](https://ainize.ai/images/run_on_ainize_button.svg)](https://ainize.ai/ainize-team/simple-echo-bot?branch=main)
 
 
 This is a simple echo bot server made to test the trigger function of ain blockchain. You can register an api as a trigger function in a specific path of ain-blockchain. When a value is written to a specific path, it is triggered in the ain-blockchain node to call the registered api.
