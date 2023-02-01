@@ -22,7 +22,8 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/trigger', async (req, res) => {
-  res.send('Triggered!');
+  res.send('Triggered start1!');
+  res.send('Triggered start2!');
 
   const tx = req.body.transaction;
   if (!tx || !tx.tx_body || !tx.tx_body.operation) {
@@ -50,6 +51,7 @@ app.post('/trigger', async (req, res) => {
     console.error(`setValue failure:`, e);
   });
   console.log('result:', result);
+  res.send(`Trigger finished successfully! ${result}`);
 });
 
 app.listen(port, () => {
