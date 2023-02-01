@@ -22,16 +22,16 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/trigger', async (req, res) => {
-  res.send('Triggered start1!');
-  res.send('Triggered start2!');
 
   const tx = req.body.transaction;
   if (!tx || !tx.tx_body || !tx.tx_body.operation) {
     console.log(`Invalid tx: ${JSON.stringify(tx)}`);
+  	res.send(`Trigger error: invalid tx`);
     return;
   }
   if (tx.tx_body.operation.type !== 'SET_VALUE') {
     console.log(`Not supported tx type: ${tx.tx_body.operation.type}`)
+  	res.send(`Trigger error: operation type is not set_value`);
     return;
   }
   const ref = tx.tx_body.operation.ref;
@@ -40,6 +40,7 @@ app.post('/trigger', async (req, res) => {
   if (parsedRef.length !== 6 || parsedRef[0] !== 'apps' || parsedRef[2] !== 'messages' ||
       parsedRef[5] !== 'user') {
     console.log(`Not supported path pattern: ${ref}`);
+  	res.send(`parsedRef: ${parsedRef}`);
     return;
   }
   const answerRef = formatPath([...parsedRef.slice(0, parsedRef.length - 1), BOT_NAME]);
