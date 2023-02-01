@@ -52,7 +52,7 @@ app.post('/trigger', async (req, res) => {
     console.error(`setValue failure:`, e);
   });
   console.log('result:', result);
-  res.send(`Trigger finished successfully! ${result}`);
+  res.send(`Trigger finished successfully! ${JSON.stringify(result,null,2)}`);
 });
 
 app.listen(port, () => {
